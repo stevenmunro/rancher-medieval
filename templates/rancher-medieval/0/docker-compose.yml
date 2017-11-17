@@ -15,7 +15,7 @@ services:
       net.ipv4.tcp_rmem: '8192 87380 16777216'
       net.ipv4.tcp_wmem: '8192 65536 16777216'
       net.ipv4.ip_local_port_range: '1024 65535'
-      net.ipv4.tcp_timestamps: '1'
+      #net.ipv4.tcp_timestamps: '1'
     environment:
       - DOMAIN=${DOMAIN}
       - DISABLE_OP_CACHE=${DISABLE_OP_CACHE}
