@@ -1,6 +1,6 @@
 version: '2'
 services:
-  ${SERVICE}:
+  rancher-medieval:
     mem_limit: 469762048
     image: stevenmunro/hosting:new
     sysctls:
@@ -10,6 +10,7 @@ services:
       - DOMAIN=${DOMAIN}
       - DISABLE_OP_CACHE=${DISABLE_OP_CACHE}
       - DISABLE_NGINX_CACHE=${DISABLE_NGINX_CACHE}
+      - PHP_VERSION=${PHP_VERSION}
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
@@ -22,6 +23,8 @@ services:
       rap.port: '80'
       io.rancher.scheduler.affinity:host_label: host=${HOST}
       rap.le_host: ${LE_HOST}
+      rap.le_test: ${LE_TEST}
+      rap.https_method: ${HTTPS_METHOD}
       io.rancher.container.pull_image: always
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'

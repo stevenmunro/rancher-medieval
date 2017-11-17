@@ -3,15 +3,8 @@ catalog:
   name: Rancher Medieval Service
   version: 0.1.0
   description: Hosting Service.
-  minimum_rancher_version: v1.1.0
+  minimum_rancher_version: v1.6.0
   questions:
-    - variable: SERVICE
-      label: Service Name
-      description: |
-        Service Name.
-      required: true
-      default: WordPress
-      type: string
     - variable: DOMAIN
       label: Primary Domain Name
       description: |
@@ -25,20 +18,45 @@ catalog:
         E.g: `example.com,dev.example.com,test.example.com`.
       required: true
       type: string
+    - variable: LE_HOST
+      label: Certificates to create/renew with Letsencrypt
+      description: |
+        Semi-colon delimited list of the domains we are accepting for this webserver instance (without spaces).
+        E.g: `example.com;dev.example.com;test.example.com`.
+      required: false
+      type: string
+    - variable: LE_TEST
+      label: Set to true to use staging Letsencrypt server
+      description: |
+        Use Staging server until domain names have fully resolved.
+      required: false
+      default: true
+      type: boolean
+    - variable: HTTPS_METHOD
+      label: Https method (redirect, noredirect, nohttps)
+      description: |
+        Default - Redirect
+      required: true
+      default: redirect
+      type: enum
+      options:
+        - redirect
+        - noredirect
+        - nohttps
     - variable: DISABLE_OP_CACHE
       label: Disable PHP Opcache
       description: |
         Turn off PHP opcode caching
       required: true
       default: false
-      type: string
+      type: boolean
     - variable: DISABLE_NGINX_CACHE
       label: Disable Nginx FASTCGI microcaching
       description: |
         Turn off Nginx microcaching
       required: true
       default: true
-      type: string
+      type: boolean
     - variable: HOST
       label: Server label to host this instance on
       description: |
@@ -46,7 +64,18 @@ catalog:
       required: true
       default: host3
       type: string
-
+    - variable: PHP_VERSION
+      label: Choose PHP version
+      description: |
+        PHP version
+      required: true
+      default: 5.6
+      type: enum
+      options:
+        - 5.6
+        - 7.0
+        - 7.1
+        - 7.2
 
 services:
   rancher-medieval:
