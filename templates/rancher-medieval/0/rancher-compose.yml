@@ -1,0 +1,33 @@
+version: '2'
+catalog:
+  name: Rancher Medieval Service
+  version: 0.1.0
+  description: Hosting Service.
+  minimum_rancher_version: v1.1.0
+  questions:
+    - variable: DOMAINS
+      label: Domain Names
+      description: |
+        Comma delimited list of the domains we are accepting for this webserver (without spaces).
+        E.g: `example.com,dev.example.com,test.example.com`.
+      required: true
+      type: string
+    - variable: DISABLE_OP_CACHE
+      label: Disable PHP Opcache
+      description: |
+        Turn off PHP opcode caching
+      required: true
+      default: false
+      type: string
+    - variable: DISABLE_NGINX_CACHE
+      label: Disable Nginx FASTCGI microcaching
+      description: |
+        Turn off Nginx microcaching
+      required: true
+      default: true
+      type: string
+
+services:
+  rancher-medieval:
+    scale: 1
+    start_on_create: true

@@ -1,0 +1,25 @@
+version: '2'
+services:
+  rancher-medieval:
+    mem_limit: 469762048
+    image: stevenmunro/hosting:new
+    environment:
+      - DOMAIN=${DOMAIN}
+      - DISABLE_OP_CACHE=${DISABLE_OP_CACHE}
+      - DISABLE_NGINX_CACHE=${DISABLE_NGINX_CACHE}
+    stdin_open: true
+    external_links:
+    - Caching/memcached:memcached
+    volumes:
+    - /nfsshare/${DOMAIN}:/DATA
+    tty: true
+    memswap_limit: 536870912
+    cpu_shares: 200
+    labels:
+      rap.port: '80'
+      io.rancher.scheduler.affinity:host_label: host=${HOST}
+      rap.le_host: ${LE_HOST}
+      io.rancher.container.pull_image: always
+      rap.host: ${DOMAINS}
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environment

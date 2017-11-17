@@ -1,0 +1,8 @@
+name: Rancher Medieval Service
+description: |
+  Hosting Service
+version: 0.1.0
+category: Certificates
+maintainer: Medieval <info@medievalwp.co.nz>
+license: MIT
+projectURL: https://github.com/stevenmunro/rancher-medieval
