@@ -8,7 +8,7 @@ catalog:
     - variable: DOMAINS
       label: Domain Names
       description: |
-        Comma delimited list of the domains we are accepting for this webserver (without spaces).
+        Comma delimited list of the domains we are accepting for this webserver instance (without spaces).
         E.g: `example.com,dev.example.com,test.example.com`.
       required: true
       type: string
