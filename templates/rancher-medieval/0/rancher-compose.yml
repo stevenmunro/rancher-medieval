@@ -5,6 +5,19 @@ catalog:
   description: Hosting Service.
   minimum_rancher_version: v1.1.0
   questions:
+    - variable: SERVICE
+      label: Service Name
+      description: |
+        Service Name.
+      required: true
+      default: WordPress
+      type: string
+    - variable: DOMAIN
+      label: Primary Domain Name
+      description: |
+        Single domain name used to identify this service.
+      required: true
+      type: string
     - variable: DOMAINS
       label: Domain Names
       description: |
