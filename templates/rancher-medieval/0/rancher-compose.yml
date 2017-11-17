@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: Rancher Medieval Service
-  version: 0.1.1
+  version: 0.1.2
   description: Hosting Service.
   minimum_rancher_version: v1.6.0
   questions:
