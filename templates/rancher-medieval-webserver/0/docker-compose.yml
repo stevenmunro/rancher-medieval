@@ -1,6 +1,6 @@
 version: '2'
 services:
-  rancher-medieval:
+  rancher-medieval-webserver:
     mem_limit: 469762048
     image: stevenmunro/hosting:new
     sysctls:

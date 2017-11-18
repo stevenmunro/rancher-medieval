@@ -1,8 +1,8 @@
 version: '2'
 catalog:
-  name: Rancher Medieval Service
+  name: Rancher Medieval Webserver
   version: 0.1.4
-  description: Hosting Service.
+  description: Webserver Service.
   minimum_rancher_version: v1.6.0
   questions:
     - variable: DOMAIN
@@ -92,6 +92,6 @@ catalog:
         - '7.2'
 
 services:
-  rancher-medieval:
+  rancher-medieval-webserver:
     scale: 1
     start_on_create: true

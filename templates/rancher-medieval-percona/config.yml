@@ -1,6 +1,6 @@
-name: Rancher Medieval Service
+name: Rancher Medieval Database Service
 description: |
-  Hosting Service
+  Database Service
 version: 0.1.4
 category: Applications
 maintainer: Medieval <info@medievalwp.co.nz>

@@ -1,0 +1,39 @@
+version: '2'
+catalog:
+  name: Rancher Medieval Database
+  version: 0.1.4
+  description: Database Service.
+  minimum_rancher_version: v1.6.0
+  questions:
+    - variable: MYSQL_ROOT_PASSWORD
+      label: Root Password
+      description: |
+        Password for ROOT access
+      required: true
+      type: string
+    - variable: DATADIR
+      label: Data Dir
+      description: |
+        Data location.
+      required: true
+      default: '/percona/mysql'
+      type: string
+    - variable: PORT
+      label: External port number
+      description: |
+        Port number to access database from the outside
+      required: true
+      default: 33061
+      type: int
+    - variable: HOST
+      label: Server label to host this instance on
+      description: |
+        Host Label
+      required: true
+      default: host3
+      type: string
+
+services:
+  rancher-medieval-database:
+    scale: 1
+    start_on_create: true

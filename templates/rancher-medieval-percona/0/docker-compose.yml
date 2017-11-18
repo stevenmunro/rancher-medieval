@@ -1,0 +1,20 @@
+version: '2'
+services:
+  rancher-medieval-database:
+    image: percona:5.7
+    sysctls:
+      net.core.somaxconn: '32768'
+      net.ipv4.tcp_syncookies: '0'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    stdin_open: true
+    volumes:
+    - ${DATADIR}:/var/lib/mysql
+    ports:
+      - ${PORT}:3306
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: host=${HOST}
+      io.rancher.container.pull_image: always
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environment
