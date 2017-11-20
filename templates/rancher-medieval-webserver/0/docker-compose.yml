@@ -1,6 +1,8 @@
 version: '2'
 services:
   rancher-medieval-webserver:
+    cap_add:
+    - SYS_PTRACE
     mem_limit: 469762048
     image: stevenmunro/hosting:new
     sysctls:
