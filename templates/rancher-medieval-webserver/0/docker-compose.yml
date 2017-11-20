@@ -3,7 +3,6 @@ services:
   rancher-medieval-webserver:
     cap_add:
     - SYS_PTRACE
-    mem_limit: 469762048
     image: stevenmunro/hosting:new
     sysctls:
       net.core.somaxconn: '32768'
@@ -15,13 +14,14 @@ services:
       - ENABLE_BASIC_AUTH=${ENABLE_BASIC_AUTH}
       - AUTH=${AUTH}
       - PHP_VERSION=${PHP_VERSION}
+      - PHP_MAX_CHILDREN=${PHP_MAX_CHILDREN}
+      - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
     tty: true
-    memswap_limit: 536870912
     cpu_shares: 200
     labels:
       rap.port: '80'
