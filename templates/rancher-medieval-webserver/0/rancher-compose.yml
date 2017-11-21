@@ -71,11 +71,12 @@ catalog:
       required: false
       type: enum
       options:
-        - 128
-        - 192
-        - 256
-        - 384
-      default: 128
+        - 96M
+        - 128M
+        - 192M
+        - 256M
+        - 384M
+      default: 96
     - variable: ENABLE_NGINX_CACHE
       label: Enable the Nginx FASTCGI Micro-cache
       description: |
