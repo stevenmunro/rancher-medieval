@@ -48,6 +48,7 @@ catalog:
       description: |
         Database Server
       required: true
+      default: database-
       type: service
     - variable: ENABLE_OP_CACHE
       label: Enable PHP Opcache
