@@ -10,12 +10,14 @@ services:
     environment:
       - DOMAIN=${DOMAIN}
       - ENABLE_OP_CACHE=${ENABLE_OP_CACHE}
+      - ENABLE_APCU_CACHE=${ENABLE_APCU_CACHE}
       - ENABLE_NGINX_CACHE=${ENABLE_NGINX_CACHE}
       - ENABLE_BASIC_AUTH=${ENABLE_BASIC_AUTH}
       - AUTH=${AUTH}
       - PHP_VERSION=${PHP_VERSION}
       - PHP_MAX_CHILDREN=${PHP_MAX_CHILDREN}
       - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
+      - APC_SHM_SIZE=${APC_SHM_SIZE}
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
