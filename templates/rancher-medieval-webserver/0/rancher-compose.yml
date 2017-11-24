@@ -90,7 +90,7 @@ catalog:
         - 192M
         - 256M
         - 384M
-      default: 96
+      default: 96M
     - variable: APC_SHM_SIZE
       label: Memory limit for APCu
       description: |
@@ -101,7 +101,7 @@ catalog:
         - 64M
         - 96M
         - 128M
-      default: 64
+      default: 64M
     - variable: ENABLE_NGINX_CACHE
       label: Enable the Nginx FASTCGI Micro-cache
       description: |
@@ -124,9 +124,9 @@ catalog:
       required: false
       type: string
     - variable: HOST
-      label: Server label to host this instance on
+      label: Host with Label to put this web-instance on
       description: |
-        Host Label
+        Host Label to use as host 'value' tag. Example: 'host=host3'
       required: true
       default: host3
       type: string
@@ -143,7 +143,25 @@ catalog:
         - '7.1'
         - '7.2'
 
+    - variable: MYSQL_ROOT_PASSWORD
+      label: Root Password
+      description: |
+        Password for ROOT access
+      required: true
+      type: string
+
+    - variable: PORT
+      label: External port number
+      description: |
+        Port number to access database from the outside
+      required: true
+      default: 33061
+      type: int  
+
 services:
   rancher-medieval-webserver:
+    scale: 1
+    start_on_create: true
+  rancher-medieval-database:
     scale: 1
     start_on_create: true
