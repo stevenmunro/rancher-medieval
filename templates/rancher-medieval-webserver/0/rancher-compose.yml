@@ -120,7 +120,7 @@ catalog:
       label: Username and Password
       description: |
         Comma delimited list of the username:password we are accepting for this webserver instance (without spaces).
-        E.g: `medieval:jwsbg645,username:password`.
+        E.g: `medieval:password,username:password`.
       required: false
       type: string
     - variable: HOST
