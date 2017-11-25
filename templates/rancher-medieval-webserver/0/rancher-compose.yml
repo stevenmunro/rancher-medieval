@@ -149,9 +149,9 @@ catalog:
         - '7.2'
 
     - variable: MYSQL_ROOT_PASSWORD
-      label: Root Password
+      label: MySQL password for user 'root'
       description: |
-        Password for ROOT access
+        MySQL password for user 'root'
       required: true
       type: string
 

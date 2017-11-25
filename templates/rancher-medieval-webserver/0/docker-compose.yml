@@ -89,6 +89,3 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
-secrets:
-  db_password:
-    external: 'true'
