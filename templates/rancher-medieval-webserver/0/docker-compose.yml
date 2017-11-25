@@ -88,7 +88,7 @@ services:
         uid: '0'
         gid: '0'
         source: db_password
-        target: ''
+        target: 'db_password'
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
         io.rancher.container.pull_image: always
