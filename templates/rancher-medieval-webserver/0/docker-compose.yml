@@ -46,7 +46,6 @@ services:
         net.ipv4.tcp_syncookies: '0'
       environment:
         - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password
-        #- MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
