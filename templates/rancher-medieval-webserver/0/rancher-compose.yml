@@ -43,13 +43,13 @@ catalog:
         - redirect
         - noredirect
         - nohttps
-    - variable: DATABASE_SERVER
-      label: Select Database Server
-      description: |
-        Database Server
-      required: true
-      default: database-
-      type: service
+    # - variable: DATABASE_SERVER
+    #   label: Select Database Server
+    #   description: |
+    #     Database Server
+    #   required: true
+    #   default: database-
+    #   type: service
     - variable: ENABLE_OP_CACHE
       label: Enable PHP Opcache
       description: |
