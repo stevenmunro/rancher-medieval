@@ -73,7 +73,7 @@ services:
         net.core.somaxconn: '32768'
         net.ipv4.tcp_syncookies: '0'
       environment:
-        - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
@@ -83,12 +83,6 @@ services:
       ports:
         - ${DATABASE_PORT}:3306/tcp
       tty: true
-      secrets:
-      - mode: '0444'
-        uid: '0'
-        gid: '0'
-        source: db_password
-        target: 'db_password'
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
         io.rancher.container.pull_image: always
