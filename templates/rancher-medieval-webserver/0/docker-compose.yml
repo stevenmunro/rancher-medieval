@@ -36,11 +36,11 @@ services:
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
-      io.rancher.sidekicks: rancher-medieval-database
+      #io.rancher.sidekicks: rancher-medieval-database
 
   rancher-medieval-database:
       image: percona:5.7
-      command: mysqld --max_allowed_packet=500M --innodb_buffer_pool_size=128M --innodb_flush_log_at_trx_commit=2 --innodb_flush_log_at_timeout=5 --innodb_log_file_size=64M --innodb_flush_method=O_DIRECT --innodb_autoinc_lock_mode=2 --sync_binlog=0 --innodb_doublewrite=1 --innodb_buffer_pool_instances=8 --innodb_change_buffering=none --innodb_adaptive_hash_index=OFF --innodb_flush_neighbors=0 --innodb_read_io_threads=8 --innodb_write_io_threads=8 --innodb_lru_scan_depth=8192 --innodb_io_capacity=15000 --innodb_io_capacity_max=25000 --loose-innodb-page-cleaners=4 --table_open_cache_instances=64 --table_open_cache=5000 --loose-innodb-log_checksum-algorithm=crc32 --loose-innodb-checksum-algorithm=strict_crc32 --max_connections=50000 --skip_name_resolve=ON --loose-performance_schema=ON --loose-performance-schema-instrument='wait/synch/%=ON'
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max_allowed_packet=500M --innodb_buffer_pool_size=128M --innodb_flush_log_at_trx_commit=2 --innodb_flush_log_at_timeout=5 --innodb_log_file_size=64M --innodb_flush_method=O_DIRECT --innodb_autoinc_lock_mode=2 --sync_binlog=0 --innodb_doublewrite=1 --innodb_buffer_pool_instances=8 --innodb_change_buffering=none --innodb_adaptive_hash_index=OFF --innodb_flush_neighbors=0 --innodb_read_io_threads=8 --innodb_write_io_threads=8 --innodb_lru_scan_depth=8192 --innodb_io_capacity=15000 --innodb_io_capacity_max=25000 --loose-innodb-page-cleaners=4 --table_open_cache_instances=64 --table_open_cache=5000 --loose-innodb-checksum-algorithm=strict_crc32 --max_connections=50000 --skip_name_resolve=ON --loose-performance_schema=ON --loose-performance-schema-instrument='wait/synch/%=ON'
       sysctls:
         net.core.somaxconn: '32768'
         net.ipv4.tcp_syncookies: '0'
@@ -49,13 +49,18 @@ services:
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
-
       stdin_open: true
       volumes:
       - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
       ports:
         - ${DATABASE_PORT}:3306/tcp
       tty: true
+      secrets:
+      - uid: '0'
+        gid: '0'
+        mode: '444'
+        name: db_host
+        secretId: 1
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
         io.rancher.container.pull_image: always
