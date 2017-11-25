@@ -56,11 +56,7 @@ services:
         - ${DATABASE_PORT}:3306/tcp
       tty: true
       secrets:
-      - uid: '0'
-        gid: '0'
-        mode: '444'
-        name: db_password
-        secretId: 1
+      - db_password
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
         io.rancher.container.pull_image: always
