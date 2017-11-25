@@ -36,6 +36,7 @@ services:
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
+      #io.rancher.sidekicks: rancher-medieval-database
 
   rancher-medieval-database:
       image: percona:5.7
@@ -54,6 +55,12 @@ services:
       ports:
         - ${DATABASE_PORT}:3306/tcp
       tty: true
+      secrets:
+      - uid: '0'
+        gid: '0'
+        mode: '444'
+        name: db_password
+        secretId: 1
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
         io.rancher.container.pull_image: always
