@@ -22,6 +22,8 @@ services:
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
+    links:
+    - rancher-medieval-database:database
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
     tty: true
