@@ -18,12 +18,14 @@ services:
       - PHP_MAX_CHILDREN=${PHP_MAX_CHILDREN}
       - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
       - APC_SHM_SIZE=${APC_SHM_SIZE}
-      - WORDPRESS_DB_HOST=rancher-medieval-database:3306
+      - WORDPRESS=${WORDPRESS}
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
+    {{- if eq .Values.WORDPRESS "true" }}
     links:
     - rancher-medieval-database:database
+    {{- end }}
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
     tty: true
@@ -39,6 +41,8 @@ services:
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
 
+
+  {{- if eq .Values.WORDPRESS "true" }}
   rancher-medieval-database:
       image: percona:5.7
       command:
@@ -82,8 +86,8 @@ services:
       stdin_open: true
       volumes:
       - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
-      ports:
-        - ${DATABASE_PORT}:3306/tcp
+      # ports:
+        # - ${DATABASE_PORT}:3306/tcp
       tty: true
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
@@ -91,3 +95,4 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
+    {{- end }}

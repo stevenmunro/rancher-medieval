@@ -135,6 +135,14 @@ catalog:
       default: host3
       type: string
 
+    - variable: WORDPRESS
+      label: WordPress
+      description: |
+        Install and Setup WordPress
+      required: true
+      default: true
+      type: boolean
+
     - variable: PHP_VERSION
       label: Choose PHP version
       description: |
@@ -167,6 +175,8 @@ services:
   rancher-medieval-webserver:
     scale: 1
     start_on_create: true
+  {{- if eq .Values.WORDPRESS "true" }}
   rancher-medieval-database:
     scale: 1
     start_on_create: true
+  {{- end }}
