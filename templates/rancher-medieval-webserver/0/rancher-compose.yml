@@ -167,8 +167,7 @@ catalog:
       label: External port number
       description: |
         Port number to access database from the outside
-      required: true
-      default: 33069
+      required: false
       type: int  
 
 services:
