@@ -156,12 +156,12 @@ catalog:
         - '7.1'
         - '7.2'
 
-    - variable: MYSQL_ROOT_PASSWORD
-      label: MySQL password for user 'root'
-      description: |
-        MySQL password for user 'root'
-      required: true
-      type: string
+    # - variable: MYSQL_ROOT_PASSWORD
+    #   label: MySQL password for user 'root'
+    #   description: |
+    #     MySQL password for user 'root'
+    #   required: true
+    #   type: string
 
     - variable: DATABASE_PORT
       label: External port number
