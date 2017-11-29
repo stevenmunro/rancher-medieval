@@ -26,12 +26,12 @@ services:
     - rancher-medieval-database:database
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
-    secrets:
-    - mode: '0444'
-      uid: '0'
-      gid: '0'
-      source: pushbullet
-      target: pushbullet
+    # secrets:
+    # - mode: '0444'
+    #   uid: '0'
+    #   gid: '0'
+    #   source: pushbullet
+    #   target: pushbullet
     tty: true
     cpu_shares: 2000
     labels:
@@ -92,12 +92,12 @@ services:
       stdin_open: true
       volumes:
       - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
-      secrets:
-      - mode: '0444'
-        uid: '0'
-        gid: '0'
-        source: mysqlroot
-        target: mysqlroot
+      # secrets:
+      # - mode: '0444'
+      #   uid: '0'
+      #   gid: '0'
+      #   source: mysqlroot
+      #   target: mysqlroot
       tty: true
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
@@ -105,8 +105,8 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
-secrets:
-  pushbullet:
-    external: 'true'
-  mysqlroot:
-    external: 'true'
+# secrets:
+#   pushbullet:
+#     external: 'true'
+#   mysqlroot:
+#     external: 'true'
