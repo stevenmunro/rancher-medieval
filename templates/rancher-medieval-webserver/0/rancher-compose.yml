@@ -35,7 +35,6 @@ catalog:
       label: Set to true to use staging Letsencrypt server
       description: |
         Use Staging server until domain names have fully resolved.
-      required: false
       default: true
       type: boolean
 
@@ -55,7 +54,6 @@ catalog:
       label: Enable PHP Opcache
       description: |
         Turn on PHP opcode caching
-      required: true
       default: true
       type: boolean
 
@@ -63,7 +61,6 @@ catalog:
       label: Enable APCu Opcache
       description: |
         Turn on PHP APCu caching
-      required: true
       default: false
       type: boolean
 
@@ -112,7 +109,6 @@ catalog:
       label: Enable the Nginx FASTCGI Micro-cache
       description: |
         Turn on Nginx microcaching
-      required: true
       default: false
       type: boolean
 
@@ -120,7 +116,6 @@ catalog:
       label: Protect this webserver instance with basic authenication
       description: |
         Enable Basic Authenication
-      required: true
       default: false
       type: boolean
 
@@ -144,7 +139,6 @@ catalog:
       label: WordPress
       description: |
         Install and Setup WordPress
-      required: true
       default: true
       type: boolean
 
