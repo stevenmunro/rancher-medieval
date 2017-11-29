@@ -34,7 +34,7 @@ services:
       uid: '0'
       gid: '0'
       source: pushbullet
-      target: pushbullet
+      target: ''
 
     tty: true
     cpu_shares: 2000
@@ -87,13 +87,11 @@ services:
       - --audit_log_format=CSV
       - --audit_log_file=audit.log
       
-
       sysctls:
         net.core.somaxconn: '32768'
         net.ipv4.tcp_syncookies: '0'
       environment:
-        #- MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-        - MYSQL_ROOT_PASSWORD={secret.localkey.mysqlroot}
+        - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysqlroot
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
@@ -102,6 +100,14 @@ services:
       - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
       # ports:
         # - ${DATABASE_PORT}:3306/tcp
+
+      secrets:
+      - mode: '0444'
+        uid: '0'
+        gid: '0'
+        source: mysqlroot
+        target: ''
+
       tty: true
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}
@@ -111,4 +117,6 @@ services:
 
 secrets:
   pushbullet:
+    external: 'true'
+  mysqlroot:
     external: 'true'

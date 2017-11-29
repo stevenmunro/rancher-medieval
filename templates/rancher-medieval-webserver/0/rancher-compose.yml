@@ -10,6 +10,7 @@ catalog:
       description: |
         Single domain name used to identify this service.
       required: true
+      default: test.dev.medievalwp.com
       type: string
     - variable: DOMAINS
       label: Domain Names
@@ -17,6 +18,7 @@ catalog:
         Comma delimited list of the domains we are accepting for this webserver instance (without spaces).
         E.g: `example.com,dev.example.com,test.example.com`.
       required: true
+      default: test.dev.medievalwp.com
       type: string
     - variable: LE_HOST
       label: Certificates to create/renew with Letsencrypt
@@ -163,12 +165,12 @@ catalog:
     #   required: true
     #   type: string
 
-    - variable: DATABASE_PORT
-      label: External port number
-      description: |
-        Port number to access database from the outside
-      required: false
-      type: int  
+    # - variable: DATABASE_PORT
+    #   label: External port number
+    #   description: |
+    #     Port number to access database from the outside
+    #   required: false
+    #   type: int  
 
 services:
   rancher-medieval-webserver:
