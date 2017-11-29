@@ -28,6 +28,14 @@ services:
 
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
+
+    secrets:
+    - mode: '0444'
+      uid: '0'
+      gid: '0'
+      source: pushbullet
+      target: pushbullet
+
     tty: true
     cpu_shares: 2000
     labels:
@@ -77,9 +85,6 @@ services:
       - --loose-performance-schema-instrument=wait/synch/%=ON
       - --plugin-load=audit_log=audit_log.so
       - --audit_log_format=CSV
-      - --audit_log_include_accounts=wordpress@%
-      - --audit_log_include_databases=wordpress
-      - --audit_log_strategy=ASYNCHRONOUS
       - --audit_log_file=audit.log
       
 
@@ -87,7 +92,8 @@ services:
         net.core.somaxconn: '32768'
         net.ipv4.tcp_syncookies: '0'
       environment:
-        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        #- MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - MYSQL_ROOT_PASSWORD={{secret.vault.mysqlroot}}
         - MYSQL_DATABASE=wordpress
         - MYSQL_USER=wordpress
         - MYSQL_PASSWORD=wordpress
@@ -103,3 +109,6 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
+secrets:
+  pushbullet:
+    external: 'true'
