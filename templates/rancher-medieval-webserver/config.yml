@@ -1,7 +1,7 @@
 name: Rancher Medieval Webserver Service
 description: |
   Hosting Service
-version: 0.1.4
+version: 0.1.5
 category: Applications
 maintainer: Medieval <info@medievalwp.co.nz>
 license: MIT
