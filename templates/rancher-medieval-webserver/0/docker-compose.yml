@@ -32,6 +32,12 @@ services:
     #   gid: '0'
     #   source: pushbullet
     #   target: pushbullet
+    secrets:
+    - mode: 444
+      uid: '0'
+      gid: '0'
+      source: pushbullet
+      target: ''
     tty: true
     cpu_shares: 2000
     labels:
@@ -106,8 +112,8 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
-# secrets:
-#   pushbullet:
-#     external: 'true'
+secrets:
+  pushbullet:
+    external: 'true'
 #   mysqlroot:
 #     external: 'true'
