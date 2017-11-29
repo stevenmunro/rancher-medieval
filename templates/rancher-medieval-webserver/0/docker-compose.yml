@@ -22,20 +22,16 @@ services:
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
-
     links:
     - rancher-medieval-database:database
-
     volumes:
     - /nfsshare/${DOMAIN}:/DATA
-
     secrets:
     - mode: '0444'
       uid: '0'
       gid: '0'
       source: pushbullet
-      target: ''
-
+      target: pushbullet
     tty: true
     cpu_shares: 2000
     labels:
@@ -48,8 +44,6 @@ services:
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
-
-
 
   rancher-medieval-database:
       image: percona:5.7
@@ -98,16 +92,12 @@ services:
       stdin_open: true
       volumes:
       - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
-      # ports:
-        # - ${DATABASE_PORT}:3306/tcp
-
       secrets:
       - mode: '0444'
         uid: '0'
         gid: '0'
         source: mysqlroot
-        target: ''
-
+        target: mysqlroot
       tty: true
       labels:
         io.rancher.scheduler.affinity:host_label: host=${HOST}

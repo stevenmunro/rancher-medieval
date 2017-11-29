@@ -74,13 +74,13 @@ catalog:
       required: false
       type: enum
       options:
-        - 2
-        - 4
-        - 6
-        - 8
-        - 12
-        - 16
-      default: 2
+        - '2'
+        - '4'
+        - '6'
+        - '8'
+        - '12'
+        - '16'
+      default: '2'
 
     - variable: PHP_MEMORY_LIMIT
       label: Memory limit per running process
