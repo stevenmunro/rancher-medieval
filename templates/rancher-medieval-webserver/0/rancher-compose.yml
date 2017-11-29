@@ -11,7 +11,7 @@ catalog:
       description: |
         Single domain name used to identify this service.
       required: true
-      default: test.dev.medievalwp.com
+      default: 'test.dev.medievalwp.com'
       type: string
 
     - variable: DOMAINS
@@ -20,7 +20,7 @@ catalog:
         Comma delimited list of the domains we are accepting for this webserver instance (without spaces).
         E.g: `example.com,dev.example.com,test.example.com`.
       required: true
-      default: test.dev.medievalwp.com
+      default: 'test.dev.medievalwp.com'
       type: string
 
     - variable: LE_HOST
@@ -39,17 +39,17 @@ catalog:
       default: true
       type: boolean
 
-    # - variable: HTTPS_METHOD
-    #   label: Https method (redirect, noredirect, nohttps)
-    #   description: |
-    #     Default - Redirect
-    #   required: true
-    #   default: redirect
-    #   type: enum
-    #   options:
-    #     - redirect
-    #     - noredirect
-    #     - nohttps
+    - variable: HTTPS_METHOD
+      label: Https method (redirect, noredirect, nohttps)
+      description: |
+        Default - Redirect
+      required: true
+      default: redirect
+      type: enum
+      options:
+        - redirect
+        - noredirect
+        - nohttps
 
     - variable: ENABLE_OP_CACHE
       label: Enable PHP Opcache
@@ -67,46 +67,46 @@ catalog:
       default: false
       type: boolean
 
-    # - variable: PHP_MAX_CHILDREN
-    #   label: Max number of concurrent processes
-    #   description: |
-    #     Concurrent processes are key to the maximum number of page requests you can serve at any given time.
-    #   required: false
-    #   type: enum
-    #   options:
-    #     - '2'
-    #     - '4'
-    #     - '6'
-    #     - '8'
-    #     - '12'
-    #     - '16'
-    #   default: '2'
+    - variable: PHP_MAX_CHILDREN
+      label: Max number of concurrent processes
+      description: |
+        Concurrent processes are key to the maximum number of page requests you can serve at any given time.
+      required: false
+      type: enum
+      options:
+        - '2'
+        - '4'
+        - '6'
+        - '8'
+        - '12'
+        - '16'
+      default: '2'
 
-    # - variable: PHP_MEMORY_LIMIT
-    #   label: Memory limit per running process
-    #   description: |
-    #     A typical appropriate memory limit for PHP running WordPress is 128MB per process; for sites with a lot of contributed modules or with high-memory pages, 256MB may be more appropriate.
-    #   required: false
-    #   type: enum
-    #   options:
-    #     - 96M
-    #     - 128M
-    #     - 192M
-    #     - 256M
-    #     - 384M
-    #   default: 96M
+    - variable: PHP_MEMORY_LIMIT
+      label: Memory limit per running process
+      description: |
+        A typical appropriate memory limit for PHP running WordPress is 128MB per process; for sites with a lot of contributed modules or with high-memory pages, 256MB may be more appropriate.
+      required: false
+      type: enum
+      options:
+        - 96M
+        - 128M
+        - 192M
+        - 256M
+        - 384M
+      default: 96M
 
-    # - variable: APC_SHM_SIZE
-    #   label: Memory limit for APCu
-    #   description: |
-    #     Available memory allocated for APCu
-    #   required: false
-    #   type: enum
-    #   options:
-    #     - 64M
-    #     - 96M
-    #     - 128M
-    #   default: 64M
+    - variable: APC_SHM_SIZE
+      label: Memory limit for APCu
+      description: |
+        Available memory allocated for APCu
+      required: false
+      type: enum
+      options:
+        - 64M
+        - 96M
+        - 128M
+      default: 64M
 
     - variable: ENABLE_NGINX_CACHE
       label: Enable the Nginx FASTCGI Micro-cache
@@ -148,18 +148,18 @@ catalog:
       default: true
       type: boolean
 
-    # - variable: PHP_VERSION
-    #   label: Choose PHP version
-    #   description: |
-    #     PHP version
-    #   required: true
-    #   default: '7.2'
-    #   type: enum
-    #   options:
-    #     - '5.6'
-    #     - '7.0'
-    #     - '7.1'
-    #     - '7.2'  
+    - variable: PHP_VERSION
+      label: Choose PHP version
+      description: |
+        PHP version
+      required: true
+      default: '7.2'
+      type: enum
+      options:
+        - '5.6'
+        - '7.0'
+        - '7.1'
+        - '7.2'  
 
 services:
   rancher-medieval-webserver:
