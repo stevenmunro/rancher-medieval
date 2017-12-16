@@ -99,7 +99,7 @@ services:
         - MYSQL_PASSWORD=wordpress
       stdin_open: true
       volumes:
-      - /nfsshare/${DOMAIN}/percona/mysql:/var/lib/mysql
+      - /nfsshare/${DIRECTORY}/percona/mysql:/var/lib/mysql
       secrets:
       - mode: 444
         uid: '0'
