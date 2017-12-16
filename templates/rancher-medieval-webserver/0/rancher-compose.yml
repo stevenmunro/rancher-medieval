@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: Rancher Medieval Webserver
-  version: 0.1.5
+  version: 0.1.6
   description: Webserver Service.
   minimum_rancher_version: v1.6.10
   questions:
@@ -10,6 +10,14 @@ catalog:
       label: Primary Domain Name
       description: |
         Single domain name used to identify this service.
+      required: true
+      default: 'test.dev.medievalwp.com'
+      type: string
+
+    - variable: DIRECTORY
+      label: Directory Name
+      description: |
+        The directory this service will reside in on the chosen host.
       required: true
       default: 'test.dev.medievalwp.com'
       type: string
@@ -132,7 +140,7 @@ catalog:
       required: false
       type: string
 
-    - variable: HOST
+    - variable: WEBHOST
       label: Host with Label to put this web-instance on
       description: |
         Host Label to use as host 'value' tag. Example: 'host=host3'
@@ -140,10 +148,18 @@ catalog:
       default: host3
       type: string
 
+    - variable: DBHOST
+      label: Host with Label to put this database-instance on
+      description: |
+        Host Label to use as host 'value' tag. Example: 'host=database3'
+      required: true
+      default: host3
+      type: string
+
     - variable: WORDPRESS
       label: WordPress
       description: |
-        Install and Setup WordPress
+        Install and Setup WordPress.
       required: true
       default: true
       type: boolean

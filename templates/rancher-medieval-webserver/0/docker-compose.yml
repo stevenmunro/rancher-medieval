@@ -42,7 +42,7 @@ services:
     cpu_shares: 2000
     labels:
       rap.port: '80'
-      io.rancher.scheduler.affinity:host_label: host=${HOST}
+      io.rancher.scheduler.affinity:host_label: host=${WEBHOST}
       rap.le_host: ${LE_HOST}
       rap.le_test: ${LE_TEST}
       rap.https_method: ${HTTPS_METHOD}
@@ -107,7 +107,7 @@ services:
         target: mysqlroot
       tty: true
       labels:
-        io.rancher.scheduler.affinity:host_label: host=${HOST}
+        io.rancher.scheduler.affinity:host_label: host=${DBHOST}
         io.rancher.container.pull_image: always
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
