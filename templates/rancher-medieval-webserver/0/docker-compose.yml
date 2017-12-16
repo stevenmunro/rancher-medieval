@@ -19,13 +19,14 @@ services:
       - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
       - APC_SHM_SIZE=${APC_SHM_SIZE}
       - WORDPRESS=${WORDPRESS}
+      - HTTPS=${LE_TEST}
     stdin_open: true
     external_links:
     - Caching/memcached:memcached
     links:
     - rancher-medieval-database:database
     volumes:
-    - /nfsshare/${DOMAIN}:/DATA
+    - /nfsshare/${DIRECTORY}:/DATA
     # secrets:
     # - mode: '0444'
     #   uid: '0'
