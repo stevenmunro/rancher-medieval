@@ -14,12 +14,10 @@ catalog:
       default: host4
       type: string
     
-    - variable: IPADDRESS
-      label: Join this IP address
+    - variable: CONTAINERID
+      label: Join this container
       description: |
-        IP Address
-      required: true
-      default: host4
+        Container id
       type: string
 services:
   rancher-medieval-dbcluster:

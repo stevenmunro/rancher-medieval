@@ -1,7 +1,7 @@
 version: '2'
 services:
   rancher-medieval-dbcluster:
-    image: percona/percona-xtradb-cluster
+    image: perconalab/pgr-57
     command:
     - mysqld
     - --character-set-server=utf8mb4
@@ -47,10 +47,10 @@ services:
       - MYSQL_PASSWORD=wordpress
       - CLUSTER_NAME=test
       - XTRABACKUP_PASSWORD=abc123
-      - CLUSTER_JOIN=${IPADDRESS}
+      - CLUSTER_JOIN=${CONTAINERID}
     stdin_open: true
     volumes:
-    - /percona-test2/mysql:/var/lib/mysql
+    - /percona-pgr/mysql:/var/lib/mysql
     tty: true
     labels:
       io.rancher.scheduler.affinity:host_label: host=${DBHOST}
