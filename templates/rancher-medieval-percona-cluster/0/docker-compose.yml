@@ -1,7 +1,7 @@
 version: '2'
 services:
   rancher-medieval-dbcluster:
-    image: percona:percona-xtradb-cluster
+    image: percona/percona-xtradb-cluster
     command:
     - mysqld
     - --character-set-server=utf8mb4
