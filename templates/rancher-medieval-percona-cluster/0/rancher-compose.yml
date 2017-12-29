@@ -13,7 +13,14 @@ catalog:
       required: true
       default: host4
       type: string
-
+    
+    - variable: IPADDRESS
+      label: Join this IP address
+      description: |
+        IP Address
+      required: true
+      default: host4
+      type: string
 services:
   rancher-medieval-dbcluster:
     scale: 1

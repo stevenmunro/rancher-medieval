@@ -47,9 +47,10 @@ services:
       - MYSQL_PASSWORD=wordpress
       - CLUSTER_NAME=test
       - XTRABACKUP_PASSWORD=abc123
+      - CLUSTER_JOIN=${IPADDRESS}
     stdin_open: true
     volumes:
-    - /percona-test/mysql:/var/lib/mysql
+    - /percona-test2/mysql:/var/lib/mysql
     tty: true
     labels:
       io.rancher.scheduler.affinity:host_label: host=${DBHOST}
