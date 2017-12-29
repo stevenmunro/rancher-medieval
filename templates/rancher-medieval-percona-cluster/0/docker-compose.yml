@@ -49,8 +49,8 @@ services:
       - XTRABACKUP_PASSWORD=abc123
       - CLUSTER_JOIN=${CONTAINERID}
     stdin_open: true
-    volumes:
-    - /percona-pgr/mysql:/var/lib/mysql
+    #volumes:
+    #- /percona-pgr/mysql:/var/lib/mysql
     tty: true
     labels:
       io.rancher.scheduler.affinity:host_label: host=${DBHOST}
