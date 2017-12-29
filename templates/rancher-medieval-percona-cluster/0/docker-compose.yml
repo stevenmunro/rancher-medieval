@@ -45,6 +45,8 @@ services:
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=wordpress
+      - CLUSTER_NAME=test
+      - XTRABACKUP_PASSWORD=abc123
     stdin_open: true
     volumes:
     - /percona-test/mysql:/var/lib/mysql
