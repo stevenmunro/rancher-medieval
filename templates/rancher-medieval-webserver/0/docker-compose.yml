@@ -59,34 +59,22 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
       - --max_allowed_packet=500M
-      - --innodb_buffer_pool_size=128M
+      - --innodb_buffer_pool_size=20M
       - --innodb_flush_log_at_trx_commit=2
-      - --innodb_flush_log_at_timeout=5
       - --innodb_log_file_size=64M
       - --innodb_flush_method=O_DIRECT
       - --innodb_autoinc_lock_mode=2
-      - --sync_binlog=0
-      - --innodb_doublewrite=1
-      - --innodb_buffer_pool_instances=8
-      - --innodb_change_buffering=none
-      - --innodb_adaptive_hash_index=OFF
       - --innodb_flush_neighbors=0
-      - --innodb_read_io_threads=8
-      - --innodb_write_io_threads=8
-      - --innodb_lru_scan_depth=8192
-      - --innodb_io_capacity=15000
-      - --innodb_io_capacity_max=25000
-      - --loose-innodb-page-cleaners=4
-      - --table_open_cache_instances=64
-      - --table_open_cache=5000
-      - --loose-innodb-checksum-algorithm=strict_crc32
-      - --max_connections=50000
+      - --innodb_random_read_ahead=OFF
+      - --innodb_io_capacity=2000
+      - --innodb_io_capacity_max=4000
+      - --max_connections=100
       - --skip_name_resolve=ON
-      - --loose-performance_schema=ON
-      - --loose-performance-schema-instrument=wait/synch/%=ON
       - --plugin-load=audit_log=audit_log.so
       - --audit_log_format=CSV
       - --audit_log_file=audit.log
+      - --audit_log_rotate_on_size=512M
+      - --audit_log_rotations=2
       
       sysctls:
         net.core.somaxconn: '32768'
@@ -100,6 +88,8 @@ services:
       stdin_open: true
       volumes:
       - /nfsshare/${DIRECTORY}/percona/mysql:/var/lib/mysql
+      ports:
+      - ${DBPORT}:3306
       secrets:
       - mode: 444
         uid: '0'

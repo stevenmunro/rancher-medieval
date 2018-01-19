@@ -1,8 +1,0 @@
-name: Rancher Medieval Database Cluster Service
-description: |
-  Database Service
-version: 0.1.4
-category: Applications
-maintainer: Medieval <info@medievalwp.co.nz>
-license: MIT
-projectURL: https://github.com/stevenmunro/rancher-medieval
