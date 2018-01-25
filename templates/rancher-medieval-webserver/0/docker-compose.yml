@@ -53,7 +53,7 @@ services:
       io.rancher.container.agent.role: environment
 
   rancher-medieval-database:
-      image: percona:5.7
+      image: mariadb:10.2
       command:
       - mysqld
       - --character-set-server=utf8mb4
@@ -70,11 +70,6 @@ services:
       - --innodb_io_capacity_max=4000
       - --max_connections=100
       - --skip_name_resolve=ON
-      - --plugin-load=audit_log=audit_log.so
-      - --audit_log_format=CSV
-      - --audit_log_file=audit.log
-      - --audit_log_rotate_on_size=512M
-      - --audit_log_rotations=2
       
       sysctls:
         net.core.somaxconn: '32768'
