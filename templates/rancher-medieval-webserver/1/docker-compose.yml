@@ -21,8 +21,6 @@ services:
       - WORDPRESS=${WORDPRESS}
       - HTTPS=${LE_TEST}
     stdin_open: true
-    external_links:
-    - Caching/memcached:memcached
     links:
     - rancher-medieval-database:database
     volumes:
@@ -83,7 +81,7 @@ services:
         - MYSQL_PASSWORD=wordpress
       stdin_open: true
       volumes:
-      - /nfsshare/${DIRECTORY}/percona/mysql:/var/lib/mysql
+      - /nfsshare/${DIRECTORY}/mariadb/mysql:/var/lib/mysql
       ports:
       - ${DBPORT}:3306
       secrets:
