@@ -44,20 +44,20 @@ catalog:
       description: |
         Use Staging server until domain names have fully resolved.
       required: false
-      default: true
+      default: false
       type: boolean
 
-    - variable: HTTPS_METHOD
-      label: Https method (redirect, noredirect, nohttps)
-      description: |
-        Default - Redirect
-      required: true
-      default: redirect
-      type: enum
-      options:
-        - redirect
-        - noredirect
-        - nohttps
+    # - variable: HTTPS_METHOD
+    #   label: Https method (redirect, noredirect, nohttps)
+    #   description: |
+    #     Default - Redirect
+    #   required: true
+    #   default: redirect
+    #   type: enum
+    #   options:
+    #     - redirect
+    #     - noredirect
+    #     - nohttps
 
     - variable: ENABLE_OP_CACHE
       label: Enable PHP Opcache
@@ -116,10 +116,10 @@ catalog:
         - 128M
       default: 64M
 
-    - variable: ENABLE_NGINX_CACHE
-      label: Enable the Nginx FASTCGI Micro-cache
+    - variable: ENABLE_WP_ROCKET
+      label: Enable WP-Rocket Static file serving
       description: |
-        Turn on Nginx microcaching
+        Turn WP-Rocket Static file serving
       required: true
       default: false
       type: boolean
@@ -143,7 +143,7 @@ catalog:
     - variable: WEBHOST
       label: Host with Label to put this web-instance on
       description: |
-        Host Label to use as host 'value' tag. Example: 'host=host3'
+        Host Label to use as host 'value' tag. Example: 'host=web3'
       required: true
       default: web3
       type: string

@@ -44,7 +44,11 @@ services:
       io.rancher.scheduler.affinity:host_label: host=${WEBHOST}
       rap.le_host: ${LE_HOST}
       rap.le_test: ${LE_TEST}
-      rap.https_method: ${HTTPS_METHOD}
+      {{- if eq .Values.LE_HOST "" }}
+      rap.https_method: nohttps
+      {{- else }}
+      rap.https_method: redirect
+      {{- end }}
       io.rancher.container.pull_image: always
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'
