@@ -42,11 +42,11 @@ services:
     labels:
       rap.port: '80'
       io.rancher.scheduler.affinity:host_label: host=${WEBHOST}
-      rap.le_host: ${LE_HOST}
-      rap.le_test: ${LE_TEST}
       {{- if eq .Values.LE_HOST "" }}
       rap.https_method: nohttps
       {{- else }}
+      rap.le_host: ${LE_HOST}
+      rap.le_test: ${LE_TEST}
       rap.https_method: redirect
       {{- end }}
       io.rancher.container.pull_image: always
@@ -86,8 +86,8 @@ services:
       stdin_open: true
       volumes:
       - /nfsshare/${DIRECTORY}/mariadb/mysql:/var/lib/mysql
-      ports:
-      - ${DBPORT}:3306
+      # ports:
+      # - ${DBPORT}:3306
       secrets:
       - mode: 444
         uid: '0'

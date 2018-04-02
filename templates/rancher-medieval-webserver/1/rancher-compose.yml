@@ -156,13 +156,13 @@ catalog:
       default: database3
       type: string
 
-    - variable: DBPORT
-      label: External port number for connecting to database server
-      description: |
-        Port number to access database from the outside
-      required: true
-      default: 8880
-      type: int
+    # - variable: DBPORT
+    #   label: External port number for connecting to database server
+    #   description: |
+    #     Port number to access database from the outside
+    #   required: true
+    #   default: 8880
+    #   type: int
 
     - variable: WORDPRESS
       label: WordPress
