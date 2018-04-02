@@ -156,6 +156,13 @@ catalog:
       default: database3
       type: string
 
+    - variable: DBPASS
+      label: Override the DB password
+      description: |
+        Override the auto-generated DB password in wp-config
+      required: false
+      type: string
+
     # - variable: DBPORT
     #   label: External port number for connecting to database server
     #   description: |

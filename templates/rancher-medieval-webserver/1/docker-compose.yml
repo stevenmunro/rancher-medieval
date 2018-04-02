@@ -20,6 +20,7 @@ services:
       - APC_SHM_SIZE=${APC_SHM_SIZE}
       - WORDPRESS=${WORDPRESS}
       - HTTPS=${LE_TEST}
+      - OVERRIDE_DBPASS=${DBPASS}
     stdin_open: true
     links:
     - rancher-medieval-database:database
