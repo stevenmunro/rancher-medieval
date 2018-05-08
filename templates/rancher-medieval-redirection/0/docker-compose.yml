@@ -1,0 +1,22 @@
+version: '2'
+services:
+  rancher-medieval-webserver:
+    cap_add:
+    - SYS_PTRACE
+    image: schmunk42/nginx-redirect
+    sysctls:
+      net.core.somaxconn: '32768'
+      net.ipv4.tcp_syncookies: '0'
+    environment:
+      - SERVER_REDIRECT=${DOMAIN}
+      - SERVER_REDIRECT_PATH=${PATH}?utm_source=${DOMAINS}
+    stdin_open: true
+    tty: true
+    cpu_shares: 100
+    labels:
+      rap.port: '80'
+      io.rancher.scheduler.affinity:host_label: host=${WEBHOST}
+      io.rancher.container.pull_image: always
+      rap.host: ${DOMAINS}
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environment

@@ -1,0 +1,45 @@
+version: '2'
+catalog:
+  name: Rancher Medieval Redirection
+  version: 0.1.7
+  description: Redirection Service.
+  minimum_rancher_version: v1.6.10
+  questions:
+
+    - variable: REDIRECT_DOMAIN
+      label: Domain Name to redirect to
+      description: |
+        Single domain name to redirect traffic to.
+      required: true
+      default: 'medievalwp.co.nz'
+      type: string
+
+    - variable: PATH
+      label: Path
+      description: |
+        optionally define path to redirect all requests eg. /landingpage
+      required: false
+      default: ''
+      type: string
+
+    - variable: DOMAINS
+      label: Domain Names
+      description: |
+        Comma delimited list of the domains we are accepting for this redirection service (without spaces).
+        E.g: `example.com,dev.example.com,test.example.com`.
+      required: true
+      default: 'domain.co.nz'
+      type: string
+
+    - variable: WEBHOST
+      label: Host with Label to put this web-instance on
+      description: |
+        Host Label to use as host 'value' tag. Example: 'host=web3'
+      required: true
+      default: web3
+      type: string
+
+services:
+  rancher-medieval-webserver:
+    scale: 1
+    start_on_create: true
