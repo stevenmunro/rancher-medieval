@@ -22,13 +22,30 @@ catalog:
       default: ''
       type: string
 
+    - variable: UTM_SOURCE
+      label: UTM Source
+      description: |
+        Name of domain/website - used for tracking.
+      required: true
+      default: ''
+      type: string
+
     - variable: DOMAINS
       label: Domain Names
       description: |
         Comma delimited list of the domains we are accepting for this redirection service (without spaces).
-        E.g: `example.com,dev.example.com,test.example.com`.
+        E.g: `example.com,www.example.com`.
       required: true
-      default: 'domain.co.nz'
+      default: 'domain.co.nz,www.domain.co.nz'
+      type: string
+
+    - variable: LE_HOST
+      label: Domain Names
+      description: |
+        Semi Colon delimited list of the domains we are accepting for this redirection service (without spaces).
+        E.g: `example.com;www.example.com`.
+      required: true
+      default: 'domain.co.nz;www.domain.co.nz'
       type: string
 
     - variable: WEBHOST

@@ -8,8 +8,9 @@ services:
       net.core.somaxconn: '32768'
       net.ipv4.tcp_syncookies: '0'
     environment:
-      - SERVER_REDIRECT=${DOMAIN}
-      - SERVER_REDIRECT_PATH=${PATH}?utm_source=${DOMAINS}
+      - SERVER_REDIRECT=${REDIRECT_DOMAIN}
+      - SERVER_REDIRECT_PATH=${PATH}?utm_source=${UTM_SOURCE}
+      - SERVER_REDIRECT_SCHEME=http
     stdin_open: true
     tty: true
     cpu_shares: 100
@@ -18,5 +19,10 @@ services:
       io.rancher.scheduler.affinity:host_label: host=${WEBHOST}
       io.rancher.container.pull_image: always
       rap.host: ${DOMAINS}
+      {{- if eq .Values.LE_HOST "" }}
+      rap.https_method: nohttps
+      {{- else }}
+      rap.le_host: ${LE_HOST}
+      {{- end }}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
