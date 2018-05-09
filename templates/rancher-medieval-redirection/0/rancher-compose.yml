@@ -44,7 +44,7 @@ catalog:
       description: |
         Semi Colon delimited list of the domains we are accepting for this redirection service (without spaces).
         E.g: `example.com;www.example.com`.
-      required: true
+      required: false
       default: 'domain.co.nz;www.domain.co.nz'
       type: string
 

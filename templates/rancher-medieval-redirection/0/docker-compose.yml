@@ -23,6 +23,7 @@ services:
       rap.https_method: nohttps
       {{- else }}
       rap.le_host: ${LE_HOST}
+      rap.le_test: false
       {{- end }}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
