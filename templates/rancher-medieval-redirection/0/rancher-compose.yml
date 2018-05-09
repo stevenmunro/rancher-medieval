@@ -57,6 +57,6 @@ catalog:
       type: string
 
 services:
-  rancher-medieval-webserver:
+  rancher-medieval-redirection:
     scale: 1
     start_on_create: true
