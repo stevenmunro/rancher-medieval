@@ -1,6 +1,6 @@
 version: '2'
 services:
-  rancher-medieval-webserver:
+  rancher-medieval-redirection:
     cap_add:
     - SYS_PTRACE
     image: schmunk42/nginx-redirect
