@@ -22,10 +22,9 @@ services:
       - HTTPS=${LE_TEST}
       - OVERRIDE_DBPASS=${DBPASS}
     stdin_open: true
-    {{- if eq .Values.WORDPRESS "" }}
+
     links:
     - rancher-medieval-database:database
-    {{- end }}
 
     volumes:
     - /nfsshare/${DIRECTORY}:/DATA
@@ -57,8 +56,6 @@ services:
       rap.host: ${DOMAINS}
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environment
-
-{{- if eq .Values.WORDPRESS "" }}
 
   rancher-medieval-database:
       image: mariadb:10.2
@@ -107,7 +104,6 @@ services:
         io.rancher.container.create_agent: 'true'
         io.rancher.container.agent.role: environment
 
-{{- end }}
 
 secrets:
   pushbullet:

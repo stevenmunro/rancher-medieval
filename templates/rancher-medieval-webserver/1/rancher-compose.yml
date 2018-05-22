@@ -196,8 +196,7 @@ services:
   rancher-medieval-webserver:
     scale: 1
     start_on_create: true
-{{- if eq .Values.WORDPRESS "" }}
+
   rancher-medieval-database:
     scale: 1
     start_on_create: true
-{{- end }}
